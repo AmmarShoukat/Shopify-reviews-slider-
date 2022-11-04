@@ -1,0 +1,72 @@
+//css & js cdn required for slider 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+   
+   
+<div class="nws_testimonial" id="nws_testimonial">
+  <div class="container">
+      <h2 class="amr_head_title">{{ section.settings.testimonial_head }}</h2>
+    <div class="testimonial_slider_row cust_top_pad">
+      {% for block in section.blocks %}
+          <div class="testimonial_content">
+            <div class="testimonial_inner">
+              {% if block.settings.testimonial_author_img !=blank %}
+                <img loading="lazy" class="author_img" src="{{ block.settings.testimonial_author_img | img_url: 'master' }}"/>
+              {% endif %}
+               <div class="product_review">
+                  <img class="star_rating" src="https://cdn.shopify.com/s/files/1/0534/7065/8731/files/star_2x_043b030c-1539-440c-8519-55a34388de69.png"/>
+                  <img class="star_rating" src="https://cdn.shopify.com/s/files/1/0534/7065/8731/files/star_2x_043b030c-1539-440c-8519-55a34388de69.png"/>
+                  <img class="star_rating" src="https://cdn.shopify.com/s/files/1/0534/7065/8731/files/star_2x_043b030c-1539-440c-8519-55a34388de69.png"/>
+                  <img class="star_rating" src="https://cdn.shopify.com/s/files/1/0534/7065/8731/files/star_2x_043b030c-1539-440c-8519-55a34388de69.png"/>
+                  <img class="star_rating" src="https://cdn.shopify.com/s/files/1/0534/7065/8731/files/star_2x_043b030c-1539-440c-8519-55a34388de69.png"/>  
+               </div>
+                <div class="testimonial_desc">{{ block.settings.testimonial_desc }}</div>
+                <h2 class="testimonial_author">{{ block.settings.testimonial_author }}</h2>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Testimonial Slider",
+    "settings": [
+       {
+          "type":"text",
+          "id":"testimonial_head",
+          "label":"Title"
+        }
+    ],
+    "blocks": [
+    {
+      "type": "image",
+      "name": "Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "testimonial_author_img",
+          "label":"Select Iamge"
+        },
+        {
+          "type": "richtext",
+          "id": "testimonial_desc",
+          "label":"Description"
+        },
+        {
+          "type":"text",
+          "id":"testimonial_author",
+          "label":"Author"
+        }
+      ]
+    }
+  ], "presets": [
+      {
+        "name": "Testimonial Slider",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
